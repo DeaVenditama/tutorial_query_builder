@@ -193,4 +193,125 @@ class Test extends BaseController
 			echo '<hr><br>';
 		}
 	}
+
+	public function like()
+	{
+		$model = new CustomModel;
+		$data = $model->like();
+		foreach($data->getResult() as $row){
+			print_r($row->Name);echo " | ";
+			print_r($row->Platform);
+			echo '<hr><br>';
+		}
+	}
+
+	public function associative_like()
+	{
+		$model = new CustomModel;
+		$data = $model->associative_like();
+		foreach($data->getResult() as $row){
+			print_r($row->Name);echo " | ";
+			print_r($row->Platform);
+			echo '<hr><br>';
+		}
+	}
+
+	public function or_like()
+	{
+		$model = new CustomModel;
+		$data = $model->or_like();
+		foreach($data->getResult() as $row){
+			print_r($row->Name);echo " | ";
+			print_r($row->Platform);
+			echo '<hr><br>';
+		}
+	}
+
+	public function not_like()
+	{
+		$model = new CustomModel;
+		$data = $model->not_like();
+		foreach($data->getResult() as $row){
+			print_r($row->Name);echo " | ";
+			print_r($row->Platform);
+			echo '<hr><br>';
+		}
+	}
+
+	public function or_not_like()
+	{
+		$model = new CustomModel;
+		$data = $model->or_not_like();
+		foreach($data->getResult() as $row){
+			print_r($row->Name);echo " | ";
+			print_r($row->Platform);
+			echo '<hr><br>';
+		}
+	}
+	
+	public function group_by()
+	{
+		$model = new CustomModel;
+		$data = $model->group_by();
+		foreach($data->getResult() as $row){
+			print_r($row);
+			echo '<hr><br>';
+		}
+	}
+
+	public function distinct()
+	{
+		$model = new CustomModel;
+		$data = $model->distinct();
+		foreach($data->getResult() as $row){
+			print_r($row);
+			echo '<hr><br>';
+		}
+	}
+
+	public function having()
+	{
+		$model = new CustomModel;
+		$data = $model->having();
+		foreach($data->getResult() as $row){
+			print_r($row);
+			echo '<hr><br>';
+		}
+	}
+
+	public function order_by()
+	{
+		$model = new CustomModel;
+		$data = $model->order_by();
+		foreach($data->getResult() as $row){
+			print_r($row->Name);echo " | ";
+			print_r($row->Year_of_Release);
+			echo '<hr><br>';
+		}
+	}
+
+	public function limit()
+	{
+		$model = new CustomModel;
+		$data = $model->limit();
+		foreach($data->getResult() as $row){
+			print_r($row->Name);echo " | ";
+			print_r($row->Year_of_Release);
+			echo '<hr><br>';
+		}
+	}
+
+	public function count_all_results()
+	{
+		$model = new CustomModel;
+		$data = $model->count_all_results();
+		print_r($data);
+	}
+
+	public function count_all()
+	{
+		$model = new CustomModel;
+		$data = $model->count_all();
+		print_r($data);
+	}
 }

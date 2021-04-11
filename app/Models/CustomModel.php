@@ -226,4 +226,120 @@ class CustomModel
         $query = $builder->get();
         return $query;
     }
+
+    public function like()
+    {   
+        /**
+         * WHERE Name LIKE '%MARIO' AND Platform LIKE '%nes%'
+         *  */          
+        $builder = $this->db->table('video_games_sales');
+        $builder->like('Name','MARIO');
+        $builder->like('Platform', 'nes');
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function associative_like()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $array = [
+            'Name' => 'mario',
+            'Platform' => 'nes',
+        ];
+        $builder->like($array);
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function or_like()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->like('Name','MARIO');
+        $builder->orLike('Platform', 'nes');
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function not_like()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->notLike('Name','MARIO');        
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function or_not_like()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->notLike('Name','MARIO');        
+        $builder->orNotLike('Platform', 'nes');
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function group_by()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->select('Publisher, COUNT("Publisher") AS jumlah');        
+        $builder->groupBy('Publisher');
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function distinct()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->select('Platform');
+        $builder->distinct();
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function having()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->select('Platform, AVG(Global_Sales)');
+        $builder->where('Global_Sales >',20);
+        $builder->groupBy('Platform');
+        $builder->having(['AVG(Global_Sales) >' => 20]);
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function order_by()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->orderBy('Year_of_Release ASC, Name DESC');
+        $query = $builder->get(20,20);
+        return $query;
+    }
+
+    public function limit()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->orderBy('Year_of_Release', 'ASC');
+        $builder->limit(20,20);
+        $query = $builder->get();
+        return $query;
+    }
+
+    public function count_all_results()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->like('Name','MARIO');
+        $builder->like('Platform', 'nes');
+        $query = $builder->countAllResults();
+        return $query;
+    }
+
+    public function count_all()
+    {
+        $builder = $this->db->table('video_games_sales');
+        $builder->like('Name','MARIO');
+        $builder->like('Platform', 'nes');
+        $query = $builder->countAll();
+        return $query;
+    }
+
+
 }
