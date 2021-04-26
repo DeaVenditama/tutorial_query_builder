@@ -314,4 +314,28 @@ class Test extends BaseController
 		$data = $model->count_all();
 		print_r($data);
 	}
+
+	public function delete_data()
+	{
+		$model = new CustomModel;
+		print_r($model->delete_data());
+	}
+
+	public function empty_table()
+	{
+		$model = new CustomModel;
+		print_r($model->empty_table());
+	}
+
+	public function truncate_table()
+	{
+		$model = new CustomModel;
+		print_r($model->truncate_table());
+	}
+
+	public function compiled_delete()
+	{
+		$model = new CustomModel;
+		echo $model->compiled_delete();
+	}
 }

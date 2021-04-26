@@ -147,9 +147,9 @@ class InsertModel
         ];
         $builder = $this->db->table('contact');
         $builder->set($data);
-        $builder->where('id',1);
-        $sql = $builder->getCompiledUpdate();
-        
+        $builder->where('nama','cek');
+        //$sql = $builder->getCompiledUpdate();
+        return $builder->update();
         return $sql;
     }
 }

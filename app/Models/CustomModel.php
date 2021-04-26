@@ -341,7 +341,34 @@ class CustomModel
         return $query;
     }
 
-    
+    //DELETE
+    public function delete_data()
+    {
+        $builder = $this->db->table('contact');
+        $builder->delete(['nama'=>'Susi']);
+        return $this->db->affectedRows();
+    }
 
+    public function empty_table()
+    {
+        $builder = $this->db->table('contact');
+        $builder->emptyTable();
+        return $this->db->affectedRows();
+    }
+
+    public function truncate_table()
+    {
+        $builder = $this->db->table('contact');
+        $builder->truncate();
+        return $this->db->affectedRows();
+    }
+
+    public function compiled_delete()
+    {
+        $builder = $this->db->table('contact');
+        $builder->where('id',1);        
+        //$builder->delete();
+        return $builder->getCompiledDelete();
+    }
 
 }
